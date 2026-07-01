@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,20 +8,6 @@ import { Calendar, MapPin, Trophy } from "lucide-react";
 
 const SITE = "https://campussupportkenya.org";
 
-export const Route = createFileRoute("/events")({
-  head: () => ({
-    meta: [
-      { title: "Awareness Events — Campus Support Kenya" },
-      { name: "description", content: "Mental health drives, anti-GBV walks, career fairs and campus quiz nights — with prizes worth winning." },
-      { property: "og:title", content: "CSK Awareness Events — Show Up, Speak Up, Win" },
-      { property: "og:description", content: "Bold campus events across Kenyan universities with prizes from local sponsors." },
-      { property: "og:image", content: `${SITE}/og-image.jpg` },
-      { property: "og:url", content: `${SITE}/events` },
-    ],
-  }),
-  component: EventsPage,
-});
-
 const upcoming = [
   { title: "Mind Matters Mental Health Drive", date: "Jun 14, 2026", venue: "University of Nairobi, Main Campus", prize: "KSh 100,000 in prizes", tag: "Mental Health" },
   { title: "Anti-GBV Awareness Walk", date: "Jul 02, 2026", venue: "Kenyatta University", prize: "Sponsored merch & data bundles", tag: "Safety" },
@@ -29,9 +15,44 @@ const upcoming = [
   { title: "Career Compass Fair", date: "Aug 09, 2026", venue: "Moi University, Eldoret", prize: "Internship slots + cash", tag: "Academic" },
 ];
 
-function EventsPage() {
+export default function EventsPage() {
   return (
-    <PageShell>
+    <>
+      <Helmet>
+        <title>Awareness Events — Campus Support Kenya</title>
+
+        <meta
+          name="description"
+          content="Mental health drives, anti-GBV walks, career fairs and campus quiz nights — with prizes worth winning."
+        />
+
+        <meta
+          property="og:title"
+          content="CSK Awareness Events — Show Up, Speak Up, Win"
+        />
+
+        <meta
+          property="og:description"
+          content="Bold campus events across Kenyan universities with prizes from local sponsors."
+        />
+
+        <meta
+          property="og:image"
+          content="https://campussupportkenya.org/og-image.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://campussupportkenya.org/events"
+        />
+
+        <link
+          rel="canonical"
+          href="https://campussupportkenya.org/events"
+        />
+      </Helmet>
+
+      <PageShell>
       <section className="relative overflow-hidden bg-csk-navy text-white">
         <img src={events} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-r from-csk-navy via-csk-navy/85 to-transparent" />
@@ -75,5 +96,6 @@ function EventsPage() {
         </div>
       </section>
     </PageShell>
+    </>    
   );
 }

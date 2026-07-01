@@ -1,29 +1,50 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { PageShell } from "@/components/PageShell";
-import { SectionHeading } from "@/components/SectionHeading";
 import { services } from "@/data/services";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const SITE = "https://campussupportkenya.org";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Our Services — Campus Support Kenya (CSK)" },
-      { name: "description", content: "Counselling, abuse support, academic follow-up, financial wellbeing aid and awareness events for Kenyan university students." },
-      { property: "og:title", content: "Our Services — Campus Support Kenya" },
-      { property: "og:description", content: "Five core services designed around the real struggles of Kenyan campus life." },
-      { property: "og:image", content: `${SITE}/og-image.jpg` },
-      { property: "og:url", content: `${SITE}/services` },
-    ],
-  }),
-  component: ServicesPage,
-});
-
-function ServicesPage() {
+export default function ServicesPage() {
   return (
-    <PageShell>
+    <>
+      <Helmet>
+        <title>Our Services — Campus Support Kenya (CSK)</title>
+
+        <meta
+          name="description"
+          content="Counselling, abuse support, academic follow-up, financial wellbeing aid and awareness events for Kenyan university students."
+        />
+
+        <meta
+          property="og:title"
+          content="Our Services — Campus Support Kenya"
+        />
+
+        <meta
+          property="og:description"
+          content="Five core services designed around the real struggles of Kenyan campus life."
+        />
+
+        <meta
+          property="og:image"
+          content="https://campussupportkenya.org/og-image.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://campussupportkenya.org/services"
+        />
+
+        <link
+          rel="canonical"
+          href="https://campussupportkenya.org/services"
+        />
+      </Helmet>
+
+      <PageShell>
       <section className="bg-csk-navy text-white py-20 md:py-28">
         <div className="container mx-auto px-4">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-csk-amber">Services</span>
@@ -80,5 +101,6 @@ function ServicesPage() {
         })}
       </section>
     </PageShell>
+    </>    
   );
 }

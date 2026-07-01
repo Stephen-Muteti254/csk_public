@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
@@ -12,24 +11,11 @@ import { Toaster } from "@/components/ui/sonner";
 import { useState } from "react";
 import { ReportApi } from "@/lib/api/report";
 import { Loader2 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const SITE = "https://campussupportkenya.org";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact CSK — Get Help Today | Campus Support Kenya" },
-      { name: "description", content: "Reach Campus Support Kenya for confidential counselling, abuse support, academic guidance or wellbeing aid. We respond fast." },
-      { property: "og:title", content: "Contact Campus Support Kenya" },
-      { property: "og:description", content: "Confidential, fast, free help for Kenyan university students." },
-      { property: "og:image", content: `${SITE}/og-image.jpg` },
-      { property: "og:url", content: `${SITE}/contact` },
-    ],
-  }),
-  component: ContactPage,
-});
-
-function ContactPage() {
+export default function ContactPage() {
   const [cskId, setCskId] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -79,7 +65,42 @@ function ContactPage() {
     }
   }
   return (
-    <PageShell>
+    <>
+      <Helmet>
+        <title>Contact CSK — Get Help Today | Campus Support Kenya</title>
+
+        <meta
+          name="description"
+          content="Reach Campus Support Kenya for confidential counselling, abuse support, academic guidance or wellbeing aid. We respond fast."
+        />
+
+        <meta
+          property="og:title"
+          content="Contact Campus Support Kenya"
+        />
+
+        <meta
+          property="og:description"
+          content="Confidential, fast, free help for Kenyan university students."
+        />
+
+        <meta
+          property="og:image"
+          content="https://campussupportkenya.org/og-image.jpg"
+        />
+
+        <meta
+          property="og:url"
+          content="https://campussupportkenya.org/contact"
+        />
+
+        <link
+          rel="canonical"
+          href="https://campussupportkenya.org/contact"
+        />
+      </Helmet>
+
+      <PageShell>
       <Toaster richColors position="top-center" />
       <section className="bg-csk-navy text-white py-20">
         <div className="container mx-auto px-4">
@@ -194,5 +215,6 @@ function ContactPage() {
         </aside>
       </section>
     </PageShell>
+    </>    
   );
 }

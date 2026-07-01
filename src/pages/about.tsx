@@ -1,24 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import hero from "@/assets/hero-students.jpg";
 import { CheckCircle2 } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const SITE = "https://campussupportkenya.org";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About CSK — Campus Support Kenya" },
-      { name: "description", content: "Built by Kenyan campus alumni for today's students. Learn about our mission, values and the team behind CSK." },
-      { property: "og:title", content: "About Campus Support Kenya" },
-      { property: "og:description", content: "Our mission, values and the people behind Kenya's dedicated campus support platform." },
-      { property: "og:image", content: `${SITE}/og-image.jpg` },
-      { property: "og:url", content: `${SITE}/about` },
-    ],
-  }),
-  component: AboutPage,
-});
 
 const values = [
   { t: "Confidentiality first", d: "Nothing you share leaves the support circle without your consent." },
@@ -27,9 +14,34 @@ const values = [
   { t: "Free for students", d: "Core support services cost you nothing." },
 ];
 
-function AboutPage() {
+export default function AboutPage() {
   return (
-    <PageShell>
+    <>
+      <Helmet>
+        <title>About CSK — Campus Support Kenya</title>
+
+        <meta
+          name="description"
+          content="Built by Kenyan campus alumni for today's students. Learn about our mission, values and the team behind CSK."
+        />
+
+        <meta
+          property="og:title"
+          content="About Campus Support Kenya"
+        />
+
+        <meta
+          property="og:description"
+          content="Our mission, values and the people behind Kenya's dedicated campus support platform."
+        />
+
+        <meta
+          property="og:image"
+          content="https://campussupportkenya.org/og-image.jpg"
+        />
+      </Helmet>
+
+      <PageShell>
       <section className="bg-csk-mist py-20 md:py-28">
         <div className="container mx-auto px-4 grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7">
@@ -95,5 +107,6 @@ function AboutPage() {
         </div>
       </section>
     </PageShell>
+    </>    
   );
 }

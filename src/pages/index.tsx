@@ -1,4 +1,3 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Button } from "@/components/ui/button";
@@ -6,26 +5,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, ShieldCheck, Heart, GraduationCap, HandCoins, Sparkles, Phone } from "lucide-react";
 import hero from "@/assets/hero-students.jpg";
 import { services } from "@/data/services";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const SITE = "https://campussupportkenya.org";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Campus Support Kenya (CSK) — Help for Every Kenyan Campus Student" },
-      {
-        name: "description",
-        content:
-          "CSK is the one-stop support platform for Kenyan university students: counselling, abuse response, academic follow-up, financial aid and awareness events.",
-      },
-      { property: "og:title", content: "Campus Support Kenya — Help for Every Kenyan Campus Student" },
-      { property: "og:description", content: "Counselling, abuse support, academic follow-up, wellbeing aid and awareness events for Kenyan university students." },
-      { property: "og:image", content: `${SITE}/og-image.jpg` },
-      { property: "og:url", content: SITE },
-    ],
-  }),
-  component: HomePage,
-});
 
 const stats = [
   { k: "12K+", v: "Students supported" },
@@ -34,9 +17,74 @@ const stats = [
   { k: "100%", v: "Confidential" },
 ];
 
-function HomePage() {
+export default function HomePage() {
   return (
-    <PageShell>
+    <>
+      <Helmet>
+        <title>
+          Campus Support Kenya (CSK) — Help for Every Kenyan Campus Student
+        </title>
+
+        <meta
+          name="description"
+          content="CSK is the one-stop support platform for Kenyan university students: counselling, abuse response, academic follow-up, financial aid and awareness events."
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Campus Support Kenya — Help for Every Kenyan Campus Student"
+        />
+
+        <meta
+          property="og:description"
+          content="Counselling, abuse support, academic follow-up, wellbeing aid and awareness events for Kenyan university students."
+        />
+
+        <meta
+          property="og:image"
+          content={`${SITE}/og-image.jpg`}
+        />
+
+        <meta
+          property="og:url"
+          content={SITE}
+        />
+
+        <meta
+          property="og:type"
+          content="website"
+        />
+
+        {/* Twitter */}
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+
+        <meta
+          name="twitter:title"
+          content="Campus Support Kenya — Help for Every Kenyan Campus Student"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Counselling, abuse support, academic follow-up, wellbeing aid and awareness events for Kenyan university students."
+        />
+
+        <meta
+          name="twitter:image"
+          content={`${SITE}/og-image.jpg`}
+        />
+
+        {/* Canonical */}
+        <link
+          rel="canonical"
+          href={SITE}
+        />
+      </Helmet>
+
+      <PageShell>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-hero text-white">
         <div className="absolute inset-0 opacity-25">
@@ -190,5 +238,6 @@ function HomePage() {
         </div>
       </section>
     </PageShell>
+    </>    
   );
 }
