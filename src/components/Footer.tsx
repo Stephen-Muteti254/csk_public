@@ -29,7 +29,7 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold text-csk-amber uppercase tracking-wider">Reach Us</h4>
           <ul className="mt-4 space-y-3 text-sm text-white/80">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-csk-amber" /> +254 700 000 000</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4 text-csk-amber" /> +254 106 916 519</li>
             <li className="flex items-center gap-2"><Mail className="h-4 w-4 text-csk-amber" /> help@campussupportkenya.org</li>
             <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-csk-amber" /> Nairobi, Kenya</li>
           </ul>

@@ -197,8 +197,8 @@ export default function ContactPage() {
           <div className="rounded-2xl bg-csk-mist p-6">
             <h3 className="font-display text-lg font-bold text-csk-navy">Crisis hotline</h3>
             <p className="mt-1 text-sm text-muted-foreground">24/7 — for urgent situations.</p>
-            <a href="tel:+254700000000" className="mt-4 inline-flex items-center gap-2 text-csk-navy font-semibold">
-              <Phone className="h-4 w-4 text-csk-amber" /> +254 700 000 000
+            <a href="tel:+254106916519" className="mt-4 inline-flex items-center gap-2 text-csk-navy font-semibold">
+              <Phone className="h-4 w-4 text-csk-amber" /> +254 106 916 519
             </a>
           </div>
           <div className="rounded-2xl border border-border/60 p-6 space-y-4 text-sm">
